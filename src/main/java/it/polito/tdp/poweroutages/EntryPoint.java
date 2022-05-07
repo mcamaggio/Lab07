@@ -21,13 +21,13 @@ public class EntryPoint extends Application {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-
+        
+        scene.getStylesheets().add("/styles/Styles.css");
+        
         controller = loader.getController();
-    	
-        // TODO impostare il model nel controller   
-        Model model = new Model();
+            
+        Model model = new Model();        
         controller.setModel(model);
-                
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);

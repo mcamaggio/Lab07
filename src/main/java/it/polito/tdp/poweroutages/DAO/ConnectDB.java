@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-
-
 /**
  * Utility class for connecting to the database
  * 
@@ -16,7 +14,7 @@ import com.zaxxer.hikari.HikariDataSource;
  */
 public class ConnectDB {
 	
-	private static final String jdbcURL = "jdbc:mysql://localhost/poweroutages";
+	private static final String jdbcURL = "jdbc:mysql://localhost:3306/poweroutages?user=root&password=eletrica";
 	private static HikariDataSource ds;
 	
 	public static Connection getConnection() {
@@ -24,7 +22,7 @@ public class ConnectDB {
 			HikariConfig config = new HikariConfig();
 			config.setJdbcUrl(jdbcURL);
 			config.setUsername("root");
-			config.setPassword("root");
+			config.setPassword("eletrica");
 			
 			config.addDataSourceProperty("cachePrepStmts", true);
 			config.addDataSourceProperty("prepStmtChacheSize", 250);
@@ -37,7 +35,7 @@ public class ConnectDB {
 			return ds.getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("Errore di connessione ad db");
+			System.err.println("Errore di connessione al db");
 			throw new RuntimeException(e);
 		}
 	}
